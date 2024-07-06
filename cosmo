@@ -1,0 +1,10 @@
+<?php
+
+use Singularity\Providers\MySql\MySqlConnection;
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+$connection = (new MySqlConnection('172.31.0.2', 'orm_test', 'root', 'root', 3306, 'utf8mb4', null))->make();
+$connection = $connection->prepare("SELECT * FROM users;");
+$connection->execute();
+dd($connection->fetchAll());
